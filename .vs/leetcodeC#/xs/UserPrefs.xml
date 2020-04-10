@@ -1,0 +1,24 @@
+﻿<Properties StartupConfiguration="{46E27D2A-A8AA-482C-B7EF-9016E821032A}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="algorithm c++.cpp">
+    <Files>
+      <File FileName="Program.cs" Line="10" Column="1" />
+      <File FileName="algorithm c++.cpp" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="leetcodeC#" expanded="True" selected="True">
+            <Node name="leetcodeC#" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.leetcodeC_223 PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
