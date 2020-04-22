@@ -19,3 +19,15 @@ C:/Users/ks1221.DHLTD/Desktop/leetcodeC#/obj/Debug/netcoreapp2.2/leetcodeC#.pdb
 /Users/sunkaizlx/Desktop/leetcodeC#/bin/Debug/netcoreapp2.2/leetcodeC#.runtimeconfig.dev.json
 /Users/sunkaizlx/Desktop/leetcodeC#/bin/Debug/netcoreapp2.2/leetcodeC#.dll
 /Users/sunkaizlx/Desktop/leetcodeC#/bin/Debug/netcoreapp2.2/leetcodeC#.pdb
+/Users/sunkaizlx/Desktop/leetcode&Coursera-C#/bin/Debug/netcoreapp2.2/leetcodeC#.deps.json
+/Users/sunkaizlx/Desktop/leetcode&Coursera-C#/bin/Debug/netcoreapp2.2/leetcodeC#.runtimeconfig.json
+/Users/sunkaizlx/Desktop/leetcode&Coursera-C#/bin/Debug/netcoreapp2.2/leetcodeC#.runtimeconfig.dev.json
+/Users/sunkaizlx/Desktop/leetcode&Coursera-C#/bin/Debug/netcoreapp2.2/leetcodeC#.dll
+/Users/sunkaizlx/Desktop/leetcode&Coursera-C#/bin/Debug/netcoreapp2.2/leetcodeC#.pdb
+/Users/sunkaizlx/Desktop/leetcode&Coursera-C#/obj/Debug/netcoreapp2.2/leetcodeC#.csprojAssemblyReference.cache
+/Users/sunkaizlx/Desktop/leetcode&Coursera-C#/obj/Debug/netcoreapp2.2/leetcodeC#.csproj.CoreCompileInputs.cache
+/Users/sunkaizlx/Desktop/leetcode&Coursera-C#/obj/Debug/netcoreapp2.2/leetcodeC#.AssemblyInfoInputs.cache
+/Users/sunkaizlx/Desktop/leetcode&Coursera-C#/obj/Debug/netcoreapp2.2/leetcodeC#.AssemblyInfo.cs
+/Users/sunkaizlx/Desktop/leetcode&Coursera-C#/obj/Debug/netcoreapp2.2/leetcodeC#.dll
+/Users/sunkaizlx/Desktop/leetcode&Coursera-C#/obj/Debug/netcoreapp2.2/leetcodeC#.pdb
+/Users/sunkaizlx/Desktop/leetcode&Coursera-C#/obj/Debug/netcoreapp2.2/leetcodeC#.genruntimeconfig.cache

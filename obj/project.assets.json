@@ -692,11 +692,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/sunkaizlx/Desktop/leetcodeC#/leetcodeC#.csproj",
+      "projectUniqueName": "/Users/sunkaizlx/Desktop/leetcode&Coursera-C#/leetcodeC#.csproj",
       "projectName": "leetcodeC#",
-      "projectPath": "/Users/sunkaizlx/Desktop/leetcodeC#/leetcodeC#.csproj",
+      "projectPath": "/Users/sunkaizlx/Desktop/leetcode&Coursera-C#/leetcodeC#.csproj",
       "packagesPath": "/Users/sunkaizlx/.nuget/packages/",
-      "outputPath": "/Users/sunkaizlx/Desktop/leetcodeC#/obj/",
+      "outputPath": "/Users/sunkaizlx/Desktop/leetcode&Coursera-C#/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
@@ -741,7 +741,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.200/RuntimeIdentifierGraph.json"
       }
     }
   }

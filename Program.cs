@@ -8,10 +8,13 @@ namespace Algorithm
     {
         static void Main(string[] args)
         {
-            var _inversion = new inversion();
             //int sol = _coursera.kara_mult(55555555, 66666666);
-            var sol = _inversion.inversions();
+            //var _inversion = new inversion();
+            //var sol = _inversion.inversions();
             //var a = 4322 % 100;
+
+            var _quicksort = new QuickSort();
+            var sol = _quicksort.QuickSorts();
             Console.WriteLine(sol);
         }
     }
