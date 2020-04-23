@@ -35,10 +35,13 @@ namespace Coursera
             foreach(var line in lines){
                 copy.Add(Int32.Parse(line));
             }
-            var arr = copy.ToArray();
-            var total_comparsion = first_pivot(arr, 0, arr.Length - 1);
-            //var total_comparsion = last_pivot(arr, 0, arr.Length - 1);
-            return total_comparsion;
+            var arr_q1 = copy.ToArray();
+            var arr_q2 = copy.ToArray();
+            var arr_q3 = copy.ToArray();
+            var q1 = first_pivot(arr_q1, 0, arr_q1.Length - 1);
+            var q2 = last_pivot(arr_q2, 0, arr_q2.Length - 1);
+            var q3 = middle_pivot(arr_q3, 0, arr_q3.Length - 1);
+            return 0;
         }
         public int first_pivot(int[] array, int left, int right){
             if (right == left){
@@ -102,6 +105,57 @@ namespace Coursera
             } else {
                 var left_comp = last_pivot(array, left, i - 1);
                 var right_comp = last_pivot(array, i + 1, right);
+                return left_comp + right_comp + comparsion;
+            }
+        }
+
+        public int middle_pivot(int[] array, int left, int right){
+            if (right == left){
+                return 0;
+            }
+            var pivot_index = 0;
+            var middle_index = 0;
+            int length = right - left;
+            if(length % 2 == 0){
+                middle_index = (length / 2) + left; // remember add left to its index, because we want to find the middle element's index within right and left.
+            } else{
+                middle_index = ((length - 1) / 2) + left;
+            }
+
+            if((array[left] < array[middle_index] && array[middle_index] < array[right]) || (array[right] < array[middle_index] && array[middle_index] < array[left])){
+                pivot_index = middle_index;
+            } else if((array[middle_index] < array[left] && array[left] < array[right]) || (array[right] < array[left] && array[left] < array[middle_index])){
+                pivot_index = left;
+            } else{
+                pivot_index = right;
+            }
+
+            var pivot = array[pivot_index];
+            array[pivot_index] = array[left];
+            array[left]= pivot;
+            var i = left + 1;
+            var comparsion = 0;
+            for (int j = left + 1;j <= right; ++j){
+                if (array[j] < pivot){
+                    var small = array[j];
+                    array[j] = array[i];
+                    array[i] = small;
+                    i++;
+                }
+                comparsion++;
+            }
+            i--; // important here ,remember we want to exclude pivot in following recursion
+            array[left] = array[i]; 
+            array[i] = pivot;
+            if(i == left){
+                var right_comp = middle_pivot(array, i + 1, right);
+                return right_comp + comparsion;
+            } else if(i == right){
+                var left_comp = middle_pivot(array, left, i - 1);
+                return left_comp + comparsion;
+            } else {
+                var left_comp = middle_pivot(array, left, i - 1);
+                var right_comp = middle_pivot(array, i + 1, right);
                 return left_comp + right_comp + comparsion;
             }
         }
