@@ -16,8 +16,11 @@ namespace Algorithm
             //var _quicksort = new QuickSort();
             //var sol = _quicksort.QuickSorts();
             
-            var _karminCut = new karget_MinCut();
-            var sol = _karminCut.karget_MinCuts();
+            //var _karminCut = new karget_MinCut();
+            //var sol = _karminCut.karget_MinCuts();
+
+            var _kosarajust = new kosarajus();
+            var sol = _kosarajust.kosarajus_twopass();
             Console.WriteLine(sol);
         }
     }
