@@ -1,7 +1,8 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
 
 namespace Coursera{
     public class kosarajus {
@@ -12,6 +13,9 @@ namespace Coursera{
             //// Read files and convert to dictionary object ----------------------------------------------------------------------------
             List<Dictionary<string,List<string>>> list_arr = new List<Dictionary<string,List<string>>>(); 
             List<Dictionary<string,List<string>>> list_arr_reverse = new List<Dictionary<string,List<string>>>(); 
+            // Create a list of integer which represents explored vertex
+            List<int> explore = new List<int>();
+            List<int> finishing_time = new List<int>();
 
             //Create two empty list which each index represents vertex
             List<List<string>> list_edges = new List<List<string>>();
@@ -42,6 +46,7 @@ namespace Coursera{
                 list_arr_reverse.Add(v2);
                 list_edges.Add(list_e);
                 list_edges_reverse.Add(list_r);
+                explore.Add(0);
             }
 
             // adding edges for each vertex to the list, either reverse case or normal case
@@ -71,15 +76,30 @@ namespace Coursera{
 
             //------------------------------------------------------------------------------------------------------------------------------------------------
             
-            var ans = Algorithm();
+            var ans = DFS_Loop_reverse(list_arr,list_arr_reverse,explore, finishing_time, max);
+            return 0;
+                
+        }
+
+        public int DFS_Loop_reverse(List<Dictionary<string,List<string>>> list_arr, List<Dictionary<string,List<string>>> list_arr_reverse, List<int> explore, List<int> finishing_time, int max){
+
+            // i will push index to finishing_time , this case, the one with lowest finishing will be positioned at the back of the finishing_time
+            for (int i = max-1;i > -1; --i){
+                if(explore[i] == 0){
+                    DFS(list_arr,list_arr_reverse,explore,finishing_time,i);
+                }
+            }
 
             return 0;
         }
-
-        public int Algorithm(){
-            int t = 0;
-            
-            return 0;
+        public void DFS(List<Dictionary<string,List<string>>> list_arr, List<Dictionary<string,List<string>>> list_arr_reverse, List<int> explore, List<int> finishing_time, int node_mum){
+            explore[node_mum] = 1;
+            for(int j = 0;j < list_arr_reverse[node_mum]["edges"].Count; ++j){
+                if(explore[int.Parse(list_arr_reverse[node_mum]["edges"][j]) - 1] == 0){
+                    DFS(list_arr,list_arr_reverse,explore,finishing_time, int.Parse(list_arr_reverse[node_mum]["edges"][j]) - 1);
+                }
+            }
+            finishing_time.Add(node_mum); 
         }
     }
 }
