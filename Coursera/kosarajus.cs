@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -76,33 +77,125 @@ namespace Coursera{
 
             //------------------------------------------------------------------------------------------------------------------------------------------------
             
-            var ans = DFS_Loop_reverse(list_arr,list_arr_reverse,explore, finishing_time, max);
+            DFS_Loop_reverse(list_arr,list_arr_reverse,explore, finishing_time, max);
+            for(int i = 0;i < max; ++i){
+                explore[i] = 0;
+            }
+
+            for(int i = 0;i < finishing_time.Count; ++i){
+                if (finishing_time[i] == 875709){
+                    continue;
+                }
+            }
+            var ans = DFS_Loop(list_arr, explore, finishing_time, max);
             return 0;
                 
         }
 
-        public int DFS_Loop_reverse(List<Dictionary<string,List<string>>> list_arr, List<Dictionary<string,List<string>>> list_arr_reverse, List<int> explore, List<int> finishing_time, int max){
-
-            // i will push index to finishing_time , this case, the one with lowest finishing will be positioned at the back of the finishing_time
-            for (int i = max-1;i > -1; --i){
+        public void DFS_Loop_reverse(List<Dictionary<string,List<string>>> list_arr,List<Dictionary<string,List<string>>> list_arr_reverse,List<int> explore, List<int> finishing_time, int max){
+            for(int i = max-1;i > -1; --i){
                 if(explore[i] == 0){
-                    DFS(list_arr,list_arr_reverse,explore,finishing_time,i);
+                    Stack<int> stack = new Stack<int>();
+                    stack.Push(i+1);
+                    explore[i] = 1;
+                    DFS(list_arr, list_arr_reverse, explore, finishing_time, i, stack);
                 }
+            }
+        }
+
+        public void DFS(List<Dictionary<string,List<string>>> list_arr,List<Dictionary<string,List<string>>> list_arr_reverse,List<int> explore, List<int> finishing_time, int node_num, Stack<int> stack){
+            Stack<int> visited = new Stack<int>();
+            int stack_num = 1;
+            int visit_num = 0;
+            while(true){
+                if(stack.Count == 0){
+                    break;
+                }
+                var pop = stack.Pop();
+                var length = list_arr_reverse[pop - 1]["edges"].Count;
+                for(int i = 0;i < length; ++i){
+                    if(explore[int.Parse(list_arr_reverse[pop - 1]["edges"][i]) - 1] == 0){
+                        stack.Push(int.Parse(list_arr_reverse[pop - 1]["edges"][i]));
+                        stack_num++;
+                        explore[int.Parse(list_arr_reverse[pop - 1]["edges"][i]) - 1] = 1;
+                    }
+                }
+                visited.Push(pop);
+                visit_num ++;
             }
 
-            return 0;
+            if(stack_num != visit_num){
+                var x = 0;
+            }
+            var visit_count = visited.Count; // must have this line, C# for loop 中间的condiction 是 dynamic的， 如果下面的forloop 我写j < visited.Count， 因为随着我们每次visited的pop
+            // 会减小visited的size ， 因为C#的 for loop 每一遍都会重新运行 一次visited.count 所以到最后的结局就是， visited.count每一次都会自动减小，然后我们就read不全我们的data， 我他妈刚才在这儿 一脸懵逼找bug找了1个多小时
+            // ！！！ 艹！！！！！！！
+            for(int j = 0;j < visit_count; ++j){
+                var pop = visited.Pop();
+                finishing_time.Add(pop);
+            }
         }
-        public void DFS(List<Dictionary<string,List<string>>> list_arr, List<Dictionary<string,List<string>>> list_arr_reverse, List<int> explore, List<int> finishing_time, int node_mum){
-            explore[node_mum] = 1;
-            for(int j = 0;j < list_arr_reverse[node_mum]["edges"].Count; ++j){
-                if(explore[int.Parse(list_arr_reverse[node_mum]["edges"][j]) - 1] == 0){
-                    DFS(list_arr,list_arr_reverse,explore,finishing_time, int.Parse(list_arr_reverse[node_mum]["edges"][j]) - 1);
+
+        public List<int> DFS_Loop(List<Dictionary<string,List<string>>> list_arr, List<int> explore, List<int> finishing_time, int max){
+            List<int> SCC = new List<int>();
+            for(int i = max-1;i > -1; --i){
+                if(explore[finishing_time[i] - 1] == 0){
+                    Stack<int> stack = new Stack<int>();
+                    stack.Push(finishing_time[i]);
+                    explore[finishing_time[i] - 1] = 1;
+                    var num = DFS_Count(list_arr, explore, finishing_time, i, stack);
+                    SCC.Add(num);
                 }
             }
-            finishing_time.Add(node_mum); 
+            return SCC;
         }
+
+         public int DFS_Count(List<Dictionary<string,List<string>>> list_arr, List<int> explore, List<int> finishing_time, int node_num, Stack<int> stack){
+            Stack<int> visited = new Stack<int>();
+            while(true){
+                if(stack.Count == 0){
+                    break;
+                }
+                var pop = stack.Pop();
+                var length = list_arr[pop - 1]["edges"].Count;
+                for(int i = 0;i < length; ++i){
+                    if(explore[int.Parse(list_arr[pop - 1]["edges"][i]) - 1] == 0){
+                        stack.Push(int.Parse(list_arr[pop - 1]["edges"][i]));
+                        explore[int.Parse(list_arr[pop - 1]["edges"][i]) - 1] = 1;
+                    }
+                }
+                visited.Push(pop);
+            }
+            return visited.Count;
+        }
+
     }
 }
+
+
+
+
+// Recursion is causing stackoverflow
+        // public int DFS_Loop_reverse(List<Dictionary<string,List<string>>> list_arr, List<Dictionary<string,List<string>>> list_arr_reverse, List<int> explore, List<int> finishing_time, int max){
+        //     // i will push index to finishing_time , this case, the one with lowest finishing will be positioned at the back of the finishing_time
+        //     for (int i = max-1;i > -1; --i){
+        //         if(explore[i] == 0){
+        //             DFS(list_arr,list_arr_reverse,explore,finishing_time,i);
+        //         }
+        //     }
+
+        //     return 0;
+        // }
+        
+        // public void DFS(List<Dictionary<string,List<string>>> list_arr, List<Dictionary<string,List<string>>> list_arr_reverse, List<int> explore, List<int> finishing_time, int node_mum){
+        //     explore[node_mum] = 1;
+        //     for(int j = 0;j < list_arr_reverse[node_mum]["edges"].Count; ++j){
+        //         if(explore[int.Parse(list_arr_reverse[node_mum]["edges"][j]) - 1] == 0){
+        //             DFS(list_arr,list_arr_reverse,explore,finishing_time, int.Parse(list_arr_reverse[node_mum]["edges"][j]) - 1);
+        //         }
+        //     }
+        //     finishing_time.Add(node_mum); 
+        // }
 
 
 
