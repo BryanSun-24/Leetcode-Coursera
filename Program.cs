@@ -18,9 +18,12 @@ namespace Algorithm
             
             //var _karminCut = new karget_MinCut();
             //var sol = _karminCut.karget_MinCuts();
+            
+            //var _kosarajust = new kosarajus();
+            //var sol = _kosarajust.kosarajus_twopass();
 
-            var _kosarajust = new kosarajus();
-            var sol = _kosarajust.kosarajus_twopass();
+            var _dijkstra = new Dijkstra{};
+            var sol = _dijkstra.dijkstra_shortest();
             Console.WriteLine(sol);
         }
     }
