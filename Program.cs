@@ -24,6 +24,7 @@ namespace Algorithm
 
             var _dijkstra = new Dijkstra{};
             var sol = _dijkstra.dijkstra_shortest();
+            
             Console.WriteLine(sol);
         }
     }
