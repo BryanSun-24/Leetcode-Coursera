@@ -45,7 +45,7 @@ namespace Coursera{
                         max_Heap[largest] = temp; 
                         index = largest;
                     }
-                } else if(min_Heap.Count - max_Heap.Count > 1){
+                } else if(min_Heap.Count - max_Heap.Count > 1){  //每一次两个heap高度差距大了，就没法维持popmax和popmin 其中一个是median，所以我们要手动把高的一边的root值传递到另一个heap里，这个lecture里讲了，想不明白可以回去看lecture slide， 11_weeks3_
                     int temp = min_Heap[0];
                     Insert_maxHeap(max_Heap, temp);
                     temp = min_Heap[min_Heap.Count-1];
@@ -78,7 +78,7 @@ namespace Coursera{
             }
             return sum;
         }
-        public void Insert_maxHeap(List<int> max_Heap, int num){
+        public void Insert_maxHeap(List<int> max_Heap, int num){ // insert之后做heapify，
             max_Heap.Add(num);
             int index = max_Heap.Count-1;
             while(max_Heap[index] > max_Heap[(index-1)/2]){
