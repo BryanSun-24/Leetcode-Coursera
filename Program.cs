@@ -22,9 +22,11 @@ namespace Algorithm
             //var _kosarajust = new kosarajus();
             //var sol = _kosarajust.kosarajus_twopass();
 
-            var _dijkstra = new Dijkstra{};
-            var sol = _dijkstra.dijkstra_shortest();
+            //var _dijkstra = new Dijkstra{};
+            //var sol = _dijkstra.dijkstra_shortest();
             
+            var _median = new median{};
+            var sol = _median.process();
             Console.WriteLine(sol);
         }
     }
