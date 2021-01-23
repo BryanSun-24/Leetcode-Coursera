@@ -25,8 +25,11 @@ namespace Algorithm
             //var _dijkstra = new Dijkstra{};
             //var sol = _dijkstra.dijkstra_shortest();
             
-            var _median = new median{};
-            var sol = _median.process();
+            //var _median = new median{};
+            //var sol = _median.process();
+            
+            var _Tsum = new hash();
+            var sol = _Tsum.Tsum();
             Console.WriteLine(sol);
         }
     }
